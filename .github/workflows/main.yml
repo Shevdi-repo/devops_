@@ -34,7 +34,7 @@ jobs:
 
       # Langkah 4: Menjalankan unit test dengan PyTest
       - name: Run Unit Tests
-        run: pytest src/test_app.py
+        run: python -m pytest src/test_app.py
 
       # Langkah 5: Analisis kode dengan SonarCloud
       - name: SonarQube Scan
