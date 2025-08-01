@@ -1,9 +1,11 @@
 # src/app.py
-
+import os
 from flask import Flask, render_template
+from prometheus_flask_exporter import PrometheusMetrics
 
 # Inisialisasi Aplikasi Flask
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
 
 # Data Inventaris Statis
 inventory_items = [
@@ -18,8 +20,6 @@ def index():
     return render_template('index.html', items=inventory_items)
 
 # Menjalankan Aplikasi
-import os # Pastikan ini ada di atas
-
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5001))
     app.run(debug=True, host='0.0.0.0', port=port)
